@@ -1,0 +1,26 @@
+#include "bits/stdc++.h"
+
+using namespace std;
+using LL = long long;
+using iipair = pair<int,int>;
+using graphT = vector<vector<int>>;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    
+    int n, cur = 0, ans = 0;
+    cin >> n;
+
+    while (n--) {
+        int num;
+        cin >> num;
+        if (num == 1) cur++;
+        else cur = 0;
+
+        ans += cur;
+    }
+
+    cout << ans;
+    return 0;
+}
