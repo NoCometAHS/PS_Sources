@@ -11,9 +11,28 @@ int main() {
     int n;
     cin >> n;
 
-    vector<LL> team(n+1), ability(n+1);
-    for (int i = 1; i <= n; i++) cin >> team[i];
-    for (int i = 1; i <= n; i++) cin >> ability[i];
+    vector<LL> team(n), ability(n);
+    for (int i = 0; i < n; i++) cin >> team[i];
+    for (int i = 0; i < n; i++) {
+        cin >> ability[i];
+        if (team[i] == 0) ability[i] = -ability[i];
+    }
+
+    vector<LL> suffixSum(n+1, 0);
+    for (int i = n-1; i >= 0; i--) {
+        suffixSum[i] = suffixSum[i+1] + ability[i];
+    }
+
+    LL ans = suffixSum[0], cnt = 1;
+    for (int i = n-1; i >= 1; i--) {
+        if (suffixSum[i] <= 0) continue;
+        cnt++;
+        ans += suffixSum[i];
+    }
+    
+
+    cout << cnt << ' ' << ans;
+
 
     return 0;
 }
@@ -73,6 +92,17 @@ dp[바로 전이랑 합쳤는 지, 떨어졌는 지][N] 으로 가능한가?
 
 곱해지는 값이 계속 달라지는데,
 헤쉬 구할 때 어떻게 했지? 제곱수를 곱해가는 방식이라 달라.
+
+---
+1번팀 능력치는 양수, 0번팀 능력치는 음수로 하고.
+
+
+S[1 : N]+ S[i_1 +1 : N]+···+S[i_{k−1} +1 : N]
+로 점수의 합을 보는 게 중요했네.
+
+접미사 누적합 만들고,
+거기서 양수만 뽑으면 되는 거 아님? 라운드에 안 들어가는 경우는 없으니 ㅂㄱㄴ
+근데? S[1:N]은 무조건 넣으니깐 상관 없는 거 아니냐
 
 
 */
