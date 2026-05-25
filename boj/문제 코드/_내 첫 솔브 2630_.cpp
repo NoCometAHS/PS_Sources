@@ -53,3 +53,109 @@ int main() {
 
     return 0;
 }
+
+/*
+#include <stdio.h>
+
+#pragma warning (disable : 4996)
+
+#define WHITE 0
+#define BLUE  1
+
+typedef struct{
+	int x;
+	int y;
+}Pos;
+
+
+Pos temp1;
+Pos temp2;
+
+int blue_paper;
+int white_paper;
+
+
+void make_colorpaper(char paper[][128], Pos leftup, Pos rightdown) {
+
+	char base_color = paper[leftup.y][leftup.x];
+	
+	for (int i = leftup.y; i < rightdown.y; i++) {
+		for (int j = leftup.x; j < rightdown.x; j++) {
+			if (paper[i][j] != base_color) goto need_to_division;
+		}
+	}
+
+	if (base_color-48 == BLUE) { blue_paper++; }
+	else white_paper++;
+
+	return;
+
+need_to_division :
+
+	temp1 = leftup;
+	temp2 = rightdown;
+
+	//left up
+	temp2.x -= (rightdown.x - leftup.x) / 2;
+	temp2.y -= (rightdown.y - leftup.y) / 2;
+	make_colorpaper(paper, leftup, temp2);
+
+	temp1 = leftup;
+	temp2 = rightdown;
+
+	//left down
+	temp1.y += (rightdown.y - leftup.y) / 2;
+	temp1.x = leftup.x;
+	temp2.x -= (rightdown.x -leftup.x)/ 2;
+	temp2.y = rightdown.y;
+	make_colorpaper(paper, temp1, temp2);
+
+	temp1 = leftup;
+	temp2 = rightdown;
+
+	//right up
+	temp1.x += (rightdown.x - leftup.x) / 2;
+	temp1.y = leftup.y;
+	temp2.x = rightdown.x;
+	temp2.y -= (rightdown.y - leftup.y) / 2;
+	make_colorpaper(paper, temp1, temp2);
+
+	temp1 = leftup;
+	temp2 = rightdown;
+
+	//right down
+	temp1.x += (rightdown.x - leftup.x) / 2;
+	temp1.y += (rightdown.y - leftup.y) / 2;
+	make_colorpaper(paper, temp1, rightdown);
+}
+
+int main(void) {
+	int paper_scale;
+	char color;
+	char paper[128][128];
+
+	scanf("%d", &paper_scale);
+	getchar();
+
+	for (int i = 0; i < paper_scale; i++) {
+		for (int j = 0; j < paper_scale; j++) {
+			color = getchar();
+			paper[i][j] = color;
+			getchar();
+		}
+	}
+
+
+	temp1.x = 0;
+	temp1.y = 0;
+	temp2.x = paper_scale;
+	temp2.y = paper_scale;
+	make_colorpaper(paper, temp1, temp2);
+
+	printf("%d\n%d", white_paper, blue_paper);
+
+	return 0;
+}
+
+첫 맞았습니다. ㅋㅋ
+*/

@@ -62,13 +62,10 @@ int main() {
                 ans = false;
                 break;
             }
-
-            cout << ca << ' ' << cb << ' ' << cc << ' ' << cur << '\n';
         }
 
 
         cout << (ans ? "YES\n" : "NO\n");
-        cout << '\n';
     }
 
     return 0;
