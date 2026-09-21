@@ -10,22 +10,15 @@ using TwoVector = vector<vector<t>>;
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    
-    LL n, m;
-    cin >> n >> m;
 
-    map<LL, LL> cnt;
-    while (m--) {
+    int q;
+    cin >> q;
+
+    while (q--) {
         LL a, b;
         cin >> a >> b;
 
-        cnt[a]++;
-        cnt[b]++;
-    }
-
-    for (int i = 1; i <= n; i++) {
-        cnt[i] = n - cnt[i] - 1;
-        cout << cnt[i] * (cnt[i]-1) * (cnt[i]-2) / 3 / 2<< ' ';
+        cout << a + b + 20 << '\n';
     }
     return 0;
 }
