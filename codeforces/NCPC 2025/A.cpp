@@ -15,7 +15,9 @@ int main() {
     cin >> n;
 
     for (int a = -999; a < 1000; a++) {
+        if (a == 0) continue;
         for (int b = - 999; b < 1000; b++) {
+            if (b == 0) continue;
             if (a + b != n) continue;
 
             cout << a << ' ' << b;
